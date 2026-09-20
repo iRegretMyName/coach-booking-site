@@ -1,69 +1,92 @@
-import Image from "next/image";
+import { siteConfig } from '@/app/config/site'
+import ScrollReveal from '@/app/components/ScrollReveal'
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
+    <div
+      style={{
+        padding: '5rem 2rem',
+        maxWidth: '1100px',
+        margin: '0 auto',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '3rem',
+        flexWrap: 'wrap',
+      }}
+    >
+      {/* Left: Text */}
+      <div style={{ flex: '1 1 400px' }}>
+        <ScrollReveal>
+          <h1 style={{ fontSize: '2.75rem', marginBottom: '1.2rem', color: '#1E2A3A' }}>
+            Hi, I'm {siteConfig.coachName}
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p style={{ fontSize: '1.15rem', color: '#5C6B7A', marginBottom: '2rem', lineHeight: '1.6' }}>
+            {siteConfig.tagline} {siteConfig.heroIntro}
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
           <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/book"
+            style={{
+              display: 'inline-block',
+              backgroundColor: '#1E2A3A',
+              color: '#F7F3EC',
+              padding: '0.85rem 1.75rem',
+              borderRadius: '4px',
+              textDecoration: 'none',
+              fontWeight: 600,
+            }}
           >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
+            Book a Session
           </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        </ScrollReveal>
+      </div>
+
+      {/* Right: Photo with accent shape */}
+      <div
+        style={{
+          flex: '1 1 280px',
+          position: 'relative',
+          display: 'flex',
+          justifyContent: 'center',
+        }}
+      >
+        {/* Accent shape behind photo */}
+        <div
+          style={{
+            position: 'absolute',
+            width: '260px',
+            height: '260px',
+            backgroundColor: '#3611d2',
+            opacity: 0.15,
+            borderRadius: '38% 62% 63% 37% / 41% 44% 56% 59%',
+            top: '10px',
+            left: '10px',
+          }}
+        />
+
+        {/* Photo */}
+        <div
+          className="floating-photo"
+          style={{
+            position: 'relative',
+            width: '260px',
+            height: '260px',
+            borderRadius: '38% 62% 63% 37% / 41% 44% 56% 59%',
+            overflow: 'hidden',
+            border: '4px solid #FFFFFF',
+            boxShadow: '0 10px 30px rgba(30, 42, 58, 0.15)',
+          }}
+        >
+          <img
+            src="/about-photo.jpeg"
+            alt={siteConfig.coachName}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+            }}
+          />
         </div>
-      </main>
+      </div>
     </div>
-  );
+  )
 }
