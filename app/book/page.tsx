@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import DatePicker from '@/app/components/DatePicker'
@@ -12,7 +12,7 @@ type Service = {
   price: number
 }
 
-export default function BookPage() {
+function BookForm() {
   const searchParams = useSearchParams()
   const [services, setServices] = useState<Service[]>([])
   const [selectedService, setSelectedService] = useState<number | null>(null)
@@ -38,7 +38,7 @@ export default function BookPage() {
       }
     }
     fetchServices()
-  }, [])
+  }, [searchParams])
 
   useEffect(() => {
     const isCompleteDate = /^\d{4}-\d{2}-\d{2}$/.test(date)
@@ -202,6 +202,7 @@ export default function BookPage() {
           >
             Back to Home
           </a>
+
           <a
             href="/services"
             style={{
@@ -312,5 +313,13 @@ export default function BookPage() {
         </button>
       </form>
     </div>
+  )
+}
+
+export default function BookPage() {
+  return (
+    <Suspense fallback={<div style={{ padding: '5rem 2rem', color: '#1E2A3A' }}>Loading...</div>}>
+      <BookForm />
+    </Suspense>
   )
 }
