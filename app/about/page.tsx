@@ -2,16 +2,9 @@ import { siteConfig } from '@/app/config/site'
 
 export default function About() {
   return (
-    <div style={{ display: 'flex', minHeight: 'calc(100vh - 65px)' }}>
-      {/* Left: Photo with fade */}
-      <div
-        style={{
-          position: 'relative',
-          width: '33%',
-          minWidth: '280px',
-          flexShrink: 0,
-        }}
-      >
+    <div className="about-layout">
+      {/* Desktop: full-height side photo */}
+      <div className="about-photo-wrap">
         <img
           src="/about-photo.jpeg"
           alt={siteConfig.coachName}
@@ -24,7 +17,6 @@ export default function About() {
             left: 0,
           }}
         />
-        {/* Fade overlay into beige */}
         <div
           style={{
             position: 'absolute',
@@ -37,24 +29,49 @@ export default function About() {
         />
       </div>
 
-      {/* Right: Text content */}
+      {/* Mobile: circular photo with accent blob */}
+      <div className="about-mobile-photo">
+        <div style={{ position: 'relative', width: '160px', height: '160px' }}>
+          <div
+            style={{
+              position: 'absolute',
+              width: '160px',
+              height: '160px',
+              backgroundColor: '#3611d2',
+              opacity: 0.15,
+              borderRadius: '38% 62% 63% 37% / 41% 44% 56% 59%',
+              top: '8px',
+              left: '8px',
+            }}
+          />
+          <div
+            style={{
+              position: 'relative',
+              width: '160px',
+              height: '160px',
+              borderRadius: '50%',
+              overflow: 'hidden',
+              border: '4px solid #FFFFFF',
+              boxShadow: '0 8px 20px rgba(30, 42, 58, 0.15)',
+            }}
+          >
+            <img
+              src="/about-photo.jpeg"
+              alt={siteConfig.coachName}
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+          </div>
+        </div>
+      </div>
+
       <div
-        style={{
-          flex: 1,
-          padding: '5rem 3rem',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-start',
-          maxWidth: '700px',
-        }}
+        className="about-text-wrap"
+        style={{ fontSize: '0.95rem', lineHeight: '1.6', color: '#5C6B7A' }}
       >
-        <h1 style={{ fontSize: '2.25rem', marginBottom: '1.5rem', color: '#23395d' }}>
+        <h1 style={{ fontSize: '2.25rem', marginBottom: '1.5rem', color: '#1E2A3A' }}>
           About Me
         </h1>
-        <div
-          style={{ fontSize: '1.1rem', color: '#5C6B7A', lineHeight: '1.7' }}
-          dangerouslySetInnerHTML={{ __html: siteConfig.aboutText }}
-        />
+        <div dangerouslySetInnerHTML={{ __html: siteConfig.aboutText }} />
       </div>
     </div>
   )

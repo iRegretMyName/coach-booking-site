@@ -130,3 +130,50 @@ input:focus, select:focus, textarea:focus {
 .floating-photo {
   animation: floatPhoto 4s ease-in-out infinite;
 }
+
+/* About page layout */
+.about-layout {
+  display: flex;
+  min-height: calc(100vh - 65px);
+}
+
+.about-photo-wrap {
+  position: relative;
+  width: 33%;
+  min-width: 280px;
+  flex-shrink: 0;
+}
+
+.about-text-wrap {
+  flex: 1;
+  padding: 5rem 3rem;
+  max-width: 700px;
+}
+
+.about-mobile-photo {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .about-layout {
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+  }
+
+  .about-photo-wrap {
+    display: none;
+  }
+
+  .about-mobile-photo {
+    display: flex;
+    justify-content: center;
+    padding-top: 3rem;
+    position: relative;
+  }
+
+  .about-text-wrap {
+    padding: 2rem 1.5rem 3rem;
+    max-width: 100%;
+  }
+}

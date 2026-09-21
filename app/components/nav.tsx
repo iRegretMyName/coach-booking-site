@@ -13,7 +13,7 @@ export default function Nav() {
 
   return (
     <nav style={{ display: 'flex', alignItems: 'center', padding: '1.2rem 2rem', backgroundColor: '#23395d' }}>
-      <Link href="/" style={{ ...linkStyle, fontFamily: 'Fraunces, serif', fontWeight: 500, fontSize: '1.2rem', marginRight: 0 }}>
+      <Link href="/about" style={{ ...linkStyle, fontFamily: 'Fraunces, serif', fontWeight: 500, fontSize: '1.2rem', marginRight: 0 }}>
         {siteConfig.coachName}
       </Link>
       <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center' }}>
