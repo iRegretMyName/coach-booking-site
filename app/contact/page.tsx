@@ -105,47 +105,45 @@ export default function Contact() {
       </form>
 
       <a
-        
-  
-  href={siteConfig.instagramUrl}
-  target="_blank"
-  rel="noopener noreferrer"
-  style={{
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: '0.5rem',
-    marginTop: '2rem',
-    color: '#5C6B7A',
-    textDecoration: 'none',
-    fontWeight: 500,
-    padding: '0.5rem 1rem',
-    border: '1px solid #E0D9C9',
-    borderRadius: '999px',
-    backgroundColor: '#FFFFFF',
-    width: 'fit-content',
-  }}
->
-  <svg
-    width="18"
-    height="18"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <defs>
-      <linearGradient id="igGradient" x1="0%" y1="100%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#FED576" />
-        <stop offset="26%" stopColor="#F47133" />
-        <stop offset="61%" stopColor="#BC3081" />
-        <stop offset="100%" stopColor="#4F5BD5" />
-      </linearGradient>
-    </defs>
-    <rect x="2" y="2" width="20" height="20" rx="5" stroke="url(#igGradient)" strokeWidth="2" />
-    <circle cx="12" cy="12" r="4.5" stroke="url(#igGradient)" strokeWidth="2" />
-    <circle cx="17.5" cy="6.5" r="1.2" fill="url(#igGradient)" />
-  </svg>
-  @{siteConfig.instagramHandle}
-</a>
+        href={siteConfig.instagramUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '0.5rem',
+          marginTop: '2rem',
+          color: '#5C6B7A',
+          textDecoration: 'none',
+          fontWeight: 500,
+          padding: '0.5rem 1rem',
+          border: '1px solid #E0D9C9',
+          borderRadius: '999px',
+          backgroundColor: '#FFFFFF',
+          width: 'fit-content',
+        }}
+      >
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <linearGradient id="igGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#FED576" />
+              <stop offset="26%" stopColor="#F47133" />
+              <stop offset="61%" stopColor="#BC3081" />
+              <stop offset="100%" stopColor="#4F5BD5" />
+            </linearGradient>
+          </defs>
+          <rect x="2" y="2" width="20" height="20" rx="5" stroke="url(#igGradient)" strokeWidth="2" />
+          <circle cx="12" cy="12" r="4.5" stroke="url(#igGradient)" strokeWidth="2" />
+          <circle cx="17.5" cy="6.5" r="1.2" fill="url(#igGradient)" />
+        </svg>
+        @{siteConfig.instagramHandle}
+      </a>
     </div>
   )
 }

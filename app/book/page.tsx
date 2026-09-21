@@ -221,7 +221,7 @@ function BookForm() {
         </div>
       </div>
     )
-  }
+  } 
 
   return (
     <div style={{ padding: '5rem 2rem', maxWidth: '500px', margin: '0 auto', color: '#1E2A3A' }}>
