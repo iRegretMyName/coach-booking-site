@@ -1,78 +1,12 @@
-import { siteConfig } from '@/app/config/site'
+import Link from 'next/link'
+
+export const metadata = { title: 'About Pragati Singh | Instayog Studio', description: 'Meet Pragati Singh and learn about the grounded, reflective approach behind Instayog Studio.' }
 
 export default function About() {
-  return (
-    <div className="about-layout">
-      {/* Desktop: full-height side photo */}
-      <div className="about-photo-wrap">
-        <img
-          src="/about-photo.jpeg"
-          alt={siteConfig.coachName}
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-          }}
-        />
-        <div
-          style={{
-            position: 'absolute',
-            top: 0,
-            right: 0,
-            width: '40%',
-            height: '100%',
-            background: 'linear-gradient(to right, rgba(245,237,220,0), rgba(245,237,220,1))',
-          }}
-        />
-      </div>
-
-      {/* Mobile: circular photo with accent blob */}
-      <div className="about-mobile-photo">
-        <div style={{ position: 'relative', width: '160px', height: '160px' }}>
-          <div
-            style={{
-              position: 'absolute',
-              width: '160px',
-              height: '160px',
-              backgroundColor: '#3611d2',
-              opacity: 0.15,
-              borderRadius: '38% 62% 63% 37% / 41% 44% 56% 59%',
-              top: '8px',
-              left: '8px',
-            }}
-          />
-          <div
-            style={{
-              position: 'relative',
-              width: '160px',
-              height: '160px',
-              borderRadius: '50%',
-              overflow: 'hidden',
-              border: '4px solid #FFFFFF',
-              boxShadow: '0 8px 20px rgba(30, 42, 58, 0.15)',
-            }}
-          >
-            <img
-              src="/about-photo.jpeg"
-              alt={siteConfig.coachName}
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-            />
-          </div>
-        </div>
-      </div>
-
-      <div
-        className="about-text-wrap"
-        style={{ fontSize: '0.95rem', lineHeight: '1.6', color: '#5C6B7A' }}
-      >
-        <h1 style={{ fontSize: '2.25rem', marginBottom: '1.5rem', color: '#1E2A3A' }}>
-          About Me
-        </h1>
-        <div dangerouslySetInnerHTML={{ __html: siteConfig.aboutText }} />
-      </div>
-    </div>
-  )
+  return <main className="founder-page">
+    <section className="founder-hero"><div className="founder-hero__image"><img src="/about-photo.jpeg" alt="Pragati Singh, founder of Instayog Studio" /></div><div><p className="eyebrow">THE PERSON BEHIND INSTAYOG</p><h1>Support that begins with <i>listening.</i></h1><p className="founder-lede">I’m Pragati Singh. I created Instayog Studio as a grounded place to explore the patterns that shape how we feel, relate, rest and move through ordinary life.</p><p>My work brings together reflection, nervous-system awareness, sound, mantra and practical everyday rituals. It is not about becoming a different person. It is about making room to meet yourself with more steadiness and honesty.</p></div></section>
+    <section className="founder-philosophy"><p className="eyebrow">THE INSTAYOG APPROACH</p><h2>Less fixing. More understanding what your inner world is already trying to say.</h2><div className="founder-principles"><article><span>01</span><h3>Start with your real life</h3><p>Relationships, sleep, home, work and the thoughts that repeat all matter. Nothing exists in isolation.</p></article><article><span>02</span><h3>Work at a human pace</h3><p>There is no performance required here. The work adapts to your capacity and the season you are in.</p></article><article><span>03</span><h3>Make insight usable</h3><p>Each conversation should leave you with a clear next practice—not only something interesting to think about.</p></article></div></section>
+    <section className="founder-how"><div><p className="eyebrow">HOW I WORK</p><h2>A conversation before a conclusion.</h2><p>You do not need the perfect words or a complete explanation. We begin by mapping what feels present, looking at the patterns around it, and deciding together what support would be useful.</p><Link href="/book" className="button button--ink">Book a first conversation <span>↗</span></Link></div><ol><li><b>Arrive</b><span>Bring what feels most alive, confusing or difficult right now.</span></li><li><b>Understand</b><span>Notice the patterns, conditions and needs underneath the surface.</span></li><li><b>Practice</b><span>Leave with a small, realistic way to carry the work into daily life.</span></li></ol></section>
+    <section className="founder-boundaries"><p className="eyebrow">A CLEAR NOTE</p><h2>This work is supportive, reflective and educational.</h2><p>It does not replace emergency services, medical treatment, psychotherapy, diagnosis or crisis support. If you are in immediate danger or need urgent care, please contact local emergency or qualified medical services.</p><Link href="/contact" className="text-link">Ask whether this space is right for you <span>→</span></Link></section>
+  </main>
 }

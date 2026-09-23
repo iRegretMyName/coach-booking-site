@@ -2,14 +2,13 @@
 
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { siteConfig } from '@/app/config/site'
 
 const links = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
   { href: '/services', label: 'Services' },
   { href: '/resources', label: 'Free Resources' },
-  { href: '/Blog', label: 'Learn' },
+  { href: '/Blog', label: 'Journal' },
   { href: '/contact', label: 'Contact' },
 ]
 
@@ -31,7 +30,6 @@ export default function Nav() {
       <div className={`nav-links ${open ? 'nav-links--open' : ''}`}>
         {links.map((link) => <Link key={link.href} href={link.href} className="nav-link" onClick={() => setOpen(false)}>{link.label}</Link>)}
         <Link href="/book" className="nav-book" onClick={() => setOpen(false)}>Begin your practice <span>↗</span></Link>
-        <Link href="/dashboard" className="nav-dashboard" title={`Sign in to ${siteConfig.coachName}'s dashboard`} aria-label="Coach dashboard" onClick={() => setOpen(false)}>✦</Link>
       </div>
     </div>
   </nav>

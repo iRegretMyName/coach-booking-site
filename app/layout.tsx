@@ -2,6 +2,7 @@ import PageTransition from './components/PageTransition'
 import type { Metadata } from "next";
 import "./globals.css";
 import Nav from "./components/nav";
+import Footer from './components/Footer'
 
 export const metadata: Metadata = {
   title: "Instayog Studio | Nervous System Regulation & Spiritual Healing",
@@ -18,6 +19,7 @@ export default function RootLayout({
       <body style={{ margin: 0 }}>
         <Nav />
           <PageTransition>{children}</PageTransition>
+        <Footer />
       </body>
     </html>
   );

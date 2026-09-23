@@ -42,7 +42,7 @@ export default function ReadingExperience({ title, category, emoji, content, exc
       {excerpt && <p className="reading-dek">{excerpt}</p>}
       <div className="reading-meta"><strong>{minutes} MIN READ</strong><span>·</span><span>By Pragati Singh</span><span>·</span><span>{publishedDate}</span></div>
     </div></header>
-    <div className="reading-hero-image"><img src="/about-photo.jpeg" alt="A calm moment at Instayog Studio" /></div>
+    <div className={`reading-hero-image reading-hero-image--${(category || 'journal').toLowerCase().replace(/[^a-z]/g, '').slice(0, 14)}`} aria-hidden="true"><span>THE PRESENCE<br />JOURNAL</span></div>
     <div className="reading-layout">
       {headings.length > 0 && <aside className="reading-toc"><p className="reading-toc-title">IN THIS GUIDE</p>{headings.map((heading) => <button type="button" key={heading.id} onClick={() => document.getElementById(heading.id)?.scrollIntoView({ behavior: 'smooth' })}>{heading.label}</button>)}</aside>}
       <article ref={articleRef} className="reading-article" dangerouslySetInnerHTML={{ __html: content }} />

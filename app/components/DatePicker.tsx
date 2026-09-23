@@ -80,7 +80,7 @@ export default function DatePicker({ value, onChange }: DatePickerProps) {
             borderRadius: '4px',
             border: '1px solid #E0D9C9',
             backgroundColor: '#FFFFFF',
-            color: '#23395d',
+            color: '#29251f',
             width: '100%',
             cursor: 'pointer',
           }}
@@ -93,7 +93,7 @@ export default function DatePicker({ value, onChange }: DatePickerProps) {
             borderRadius: '4px',
             border: '1px solid #E0D9C9',
             backgroundColor: '#FFFFFF',
-            color: '#23395d',
+            color: '#29251f',
             cursor: 'pointer',
           }}
         >
@@ -126,17 +126,17 @@ export default function DatePicker({ value, onChange }: DatePickerProps) {
             <button
               type="button"
               onClick={goPrevMonth}
-              style={{ background: 'none', border: 'none', color: '#23395d', cursor: 'pointer', fontSize: '1.2rem' }}
+              style={{ background: 'none', border: 'none', color: '#29251f', cursor: 'pointer', fontSize: '1.2rem' }}
             >
               ‹
             </button>
-            <span style={{ fontWeight: 'bold', color: '#23395d' }}>
+            <span style={{ fontWeight: 'bold', color: '#29251f' }}>
               {MONTH_NAMES[viewMonth]} {viewYear}
             </span>
             <button
               type="button"
               onClick={goNextMonth}
-              style={{ background: 'none', border: 'none', color: '#23395d', cursor: 'pointer', fontSize: '1.2rem' }}
+              style={{ background: 'none', border: 'none', color: '#29251f', cursor: 'pointer', fontSize: '1.2rem' }}
             >
               ›
             </button>
@@ -162,9 +162,9 @@ export default function DatePicker({ value, onChange }: DatePickerProps) {
                 style={{
                   padding: '0.4rem 0',
                   borderRadius: '4px',
-                  border: isToday(day) ? '1px solid #23395d' : 'none',
-                  backgroundColor: isSelected(day) ? '#23395d' : 'transparent',
-                  color: isSelected(day) ? '#F5EDDC' : '#23395d',
+                  border: isToday(day) ? '1px solid #405447' : 'none',
+                  backgroundColor: isSelected(day) ? '#405447' : 'transparent',
+                  color: isSelected(day) ? '#f6f1e8' : '#29251f',
                   cursor: 'pointer',
                   fontSize: '0.85rem',
                 }}
