@@ -1,42 +1,38 @@
 'use client'
 
-import { siteConfig } from '@/app/config/site'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import { siteConfig } from '@/app/config/site'
+
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/services', label: 'Services' },
+  { href: '/resources', label: 'Free Resources' },
+  { href: '/Blog', label: 'Learn' },
+  { href: '/contact', label: 'Contact' },
+]
 
 export default function Nav() {
-  const linkStyle = {
-    color: '#F7F3EC',
-    textDecoration: 'none',
-    marginRight: '1.5rem',
-    fontSize: '0.95rem',
-  }
+  const [isFloating, setIsFloating] = useState(false)
+  const [open, setOpen] = useState(false)
 
-  return (
-    <nav style={{ display: 'flex', alignItems: 'center', padding: '1.2rem 2rem', backgroundColor: '#23395d' }}>
-      <Link href="/about" style={{ ...linkStyle, fontFamily: 'Fraunces, serif', fontWeight: 500, fontSize: '1.2rem', marginRight: 0 }}>
-        {siteConfig.coachName}
-      </Link>
-      <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center' }}>
-        <Link href="/" style={linkStyle} className="nav-link">Home</Link>
-        <Link href="/about" style={linkStyle} className="nav-link">About</Link>
-        <Link href="/services" style={linkStyle} className="nav-link">Services</Link>
-        <Link href="/contact" style={linkStyle} className="nav-link">Contact</Link>
-        <Link href="/book" style={{ backgroundColor: '#F7F3EC', color: '#23395d', padding: '0.5rem 1.2rem', borderRadius: '4px', textDecoration: 'none', fontWeight: 600, fontSize: '0.9rem' }}>
-          Book Now
-        </Link>
-        <Link
-          href="/dashboard"
-          style={{
-            marginLeft: '1rem',
-            color: '#8A93A0',
-            fontSize: '1.1rem',
-            textDecoration: 'none',
-          }}
-          title="Coach Login"
-        >
-          ⚙️
-        </Link>
+  useEffect(() => {
+    const updateVisibility = () => setIsFloating(window.scrollY > 320)
+    updateVisibility()
+    window.addEventListener('scroll', updateVisibility, { passive: true })
+    return () => window.removeEventListener('scroll', updateVisibility)
+  }, [])
+
+  return <nav className={`site-nav ${isFloating ? 'site-nav--floating' : ''}`}>
+    <div className="nav-inner">
+      <Link href="/" className="nav-brand" onClick={() => setOpen(false)}><span>INSTA</span>YOG<em>®</em></Link>
+      <button className="nav-toggle" type="button" aria-expanded={open} aria-label="Toggle navigation" onClick={() => setOpen((value) => !value)}><span /><span /></button>
+      <div className={`nav-links ${open ? 'nav-links--open' : ''}`}>
+        {links.map((link) => <Link key={link.href} href={link.href} className="nav-link" onClick={() => setOpen(false)}>{link.label}</Link>)}
+        <Link href="/book" className="nav-book" onClick={() => setOpen(false)}>Begin your practice <span>↗</span></Link>
+        <Link href="/dashboard" className="nav-dashboard" title={`Sign in to ${siteConfig.coachName}'s dashboard`} aria-label="Coach dashboard" onClick={() => setOpen(false)}>✦</Link>
       </div>
-    </nav>
-  )
+    </div>
+  </nav>
 }

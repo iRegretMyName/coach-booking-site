@@ -45,83 +45,44 @@ export default function Contact() {
     setSubmitted(true)
   }
 
-  const inputStyle = {
-    padding: '0.6rem',
-    borderRadius: '4px',
-    border: '1px solid #E0D9C9',
-    backgroundColor: '#FFFFFF',
-    color: '#23395d',
-    width: '100%',
-  }
-
   if (submitted) {
     return (
-      <div style={{ padding: '5rem 2rem', maxWidth: '700px', margin: '0 auto' }}>
-        <h1 style={{ color: '#23395d' }}>Message Sent!</h1>
-        <p style={{ color: '#5C6B7A' }}>Thanks for reaching out — I'll get back to you soon.</p>
+      <div className="section-page contact-success">
+        <p className="eyebrow">MESSAGE RECEIVED</p><h1>Thank you<br />for reaching out.</h1>
+        <p>Thanks for the note — I&apos;ll get back to you soon.</p>
       </div>
     )
   }
 
   return (
-    <div style={{ padding: '5rem 2rem', maxWidth: '500px', margin: '0 auto' }}>
-      <h1 style={{ fontSize: '2.25rem', marginBottom: '1rem', color: '#23395d' }}>Get in Touch</h1>
-      <p style={{ fontSize: '1.1rem', color: '#5C6B7A', marginBottom: '1.5rem' }}>
-        Have a question before booking? Send a message below.
-      </p>
+    <div className="section-page contact-page"><div><p className="eyebrow">A CONVERSATION STARTS HERE</p><h1>Let&apos;s make<br />a little space.</h1><p className="contact-lede">Have a question before booking? Share what&apos;s on your mind and I&apos;ll be in touch.</p></div>
 
-      <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: '1rem' }}>
-          <label style={{ color: '#23395d', fontWeight: 500 }}>Your Name</label><br />
-          <input style={inputStyle} type="text" value={name} onChange={(e) => setName(e.target.value)} />
+      <form onSubmit={handleSubmit} className="contact-form">
+        <div>
+          <label>Your Name</label>
+          <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
         </div>
 
-        <div style={{ marginBottom: '1rem' }}>
-          <label style={{ color: '#23395d', fontWeight: 500 }}>Your Email</label><br />
-          <input style={inputStyle} type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <div>
+          <label>Your Email</label>
+          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
         </div>
 
-        <div style={{ marginBottom: '1rem' }}>
-          <label style={{ color: '#23395d', fontWeight: 500 }}>Message</label><br />
-          <textarea style={{ ...inputStyle, minHeight: '120px' }} value={message} onChange={(e) => setMessage(e.target.value)} />
+        <div>
+          <label>Message</label>
+          <textarea value={message} onChange={(e) => setMessage(e.target.value)} />
         </div>
 
-        {errorMsg && <p style={{ color: '#B33A3A' }}>{errorMsg}</p>}
+        {errorMsg && <p className="form-error">{errorMsg}</p>}
 
-        <button
-          type="submit"
-          style={{
-            padding: '0.75rem 1.5rem',
-            backgroundColor: '#23395d',
-            color: '#F5EDDC',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer',
-            fontWeight: 600,
-          }}
-        >
-          Send Message
-        </button>
+        <button type="submit">Send your message <span>↗</span></button>
       </form>
 
       <a
         href={siteConfig.instagramUrl}
         target="_blank"
         rel="noopener noreferrer"
-        style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: '0.5rem',
-          marginTop: '2rem',
-          color: '#5C6B7A',
-          textDecoration: 'none',
-          fontWeight: 500,
-          padding: '0.5rem 1rem',
-          border: '1px solid #E0D9C9',
-          borderRadius: '999px',
-          backgroundColor: '#FFFFFF',
-          width: 'fit-content',
-        }}
+        className="instagram-link"
       >
         <svg
           width="18"

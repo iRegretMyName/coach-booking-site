@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { supabase } from '@/lib/supabase'
 import ServicesManager from './ServicesManager'
 import AvailabilityManager from './AvailabilityManager'
+import BlogManager from './BlogManager'
 
 type Booking = {
   id: string
@@ -26,7 +27,7 @@ export default function DashboardContent() {
   const [services, setServices] = useState<Service[]>([])
   const [loading, setLoading] = useState(true)
   const [confirmingDelete, setConfirmingDelete] = useState<string | null>(null)
-  const [activeTab, setActiveTab] = useState<'bookings' | 'services' | 'availability'>('bookings')
+  const [activeTab, setActiveTab] = useState<'bookings' | 'services' | 'availability' | 'blog'>('bookings')
 
   useEffect(() => {
     fetchData()
@@ -287,6 +288,20 @@ export default function DashboardContent() {
         >
           Availability
         </button>
+        <button
+          onClick={() => setActiveTab('blog')}
+          style={{
+            padding: '0.5rem 1rem',
+            borderRadius: '4px',
+            border: 'none',
+            backgroundColor: activeTab === 'blog' ? '#3611d2' : 'transparent',
+            color: activeTab === 'blog' ? '#F5EDDC' : '#5C6B7A',
+            cursor: 'pointer',
+            fontWeight: 600,
+          }}
+        >
+          Blog
+        </button>
       </div>
 
       {activeTab === 'bookings' && (
@@ -310,6 +325,8 @@ export default function DashboardContent() {
       )}
 
       {activeTab === 'services' && <ServicesManager />}
+
+      {activeTab === 'blog' && <BlogManager />}
 
       {activeTab === 'availability' && <AvailabilityManager />}
     </div>

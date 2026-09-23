@@ -1,11 +1,11 @@
 export const siteConfig = {
-  coachName: 'Pragati',
+  coachName: 'Pragati Singh',
 
   tagline:
-    "I help people improve their physical fitness, build strength and flexibility, boost their confidence, and discover the joy of movement through yoga, dance, and fitness.",
+    "I help people create small shifts in their nervous system so they can experience profound shifts in life — through presence, mantra, sound, environment and spiritual practice.",
 
   heroIntro:
-    "Book a free discovery call and let's talk about your goals.",
+    "Begin with a grounded conversation about what your system is asking for.",
 
   aboutText: `
     <p><strong>Taking care of your body and mind is one of the greatest investments you can make in yourself.</strong></p>

@@ -4,17 +4,10 @@ import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 import DatePicker from '@/app/components/DatePicker'
-
-type Service = {
-  id: number
-  name: string
-  duration_minutes: number
-  price: number
-}
+import { services } from '@/app/content/services'
 
 function BookForm() {
   const searchParams = useSearchParams()
-  const [services, setServices] = useState<Service[]>([])
   const [selectedService, setSelectedService] = useState<number | null>(null)
   const [date, setDate] = useState('')
   const [availableSlots, setAvailableSlots] = useState<string[]>([])
@@ -27,17 +20,8 @@ function BookForm() {
   const [loadingSlots, setLoadingSlots] = useState(false)
 
   useEffect(() => {
-    const fetchServices = async () => {
-      const { data } = await supabase.from('services').select('*')
-      if (data) {
-        setServices(data)
-        const preselectedId = searchParams.get('service')
-        if (preselectedId) {
-          setSelectedService(Number(preselectedId))
-        }
-      }
-    }
-    fetchServices()
+    const preselectedId = searchParams.get('service')
+    if (preselectedId && services.some((service) => service.id === Number(preselectedId))) setSelectedService(Number(preselectedId))
   }, [searchParams])
 
   useEffect(() => {
@@ -169,7 +153,7 @@ function BookForm() {
   if (submitted) {
     const confettiEmojis = ['🎉', '✨', '🎊', '⭐']
     return (
-      <div style={{ padding: '5rem 2rem', maxWidth: '500px', margin: '0 auto', color: '#1E2A3A', position: 'relative', overflow: 'hidden' }}>
+      <div className="booking-page booking-page--confirmed" style={{ padding: '5rem 2rem', maxWidth: '500px', margin: '0 auto', color: '#1E2A3A', position: 'relative', overflow: 'hidden' }}>
         {Array.from({ length: 12 }).map((_, i) => (
           <span
             key={i}
@@ -224,7 +208,7 @@ function BookForm() {
   } 
 
   return (
-    <div style={{ padding: '5rem 2rem', maxWidth: '500px', margin: '0 auto', color: '#1E2A3A' }}>
+    <div className="booking-page" style={{ padding: '5rem 2rem', maxWidth: '500px', margin: '0 auto', color: '#1E2A3A' }}>
       <h1 style={{ fontSize: '2.25rem', marginBottom: '1.5rem' }}>Book a Session</h1>
       <form onSubmit={handleSubmit}>
         <div style={{ marginBottom: '1rem' }}>
@@ -237,7 +221,7 @@ function BookForm() {
             <option value="">-- Select a service --</option>
             {services.map((s) => (
               <option key={s.id} value={s.id}>
-                {s.name} ({s.duration_minutes} min - ${s.price})
+                {s.name} — {s.format} · {s.price}
               </option>
             ))}
           </select>

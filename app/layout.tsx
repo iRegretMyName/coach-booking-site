@@ -4,8 +4,8 @@ import "./globals.css";
 import Nav from "./components/nav";
 
 export const metadata: Metadata = {
-  title: "Coach Booking Site",
-  description: "Book a coaching session",
+  title: "Instayog Studio | Nervous System Regulation & Spiritual Healing",
+  description: "Small shifts in nervous system, profound shifts in life. Explore nervous system regulation, mantra, relationships and spiritual growth with Pragati Singh.",
 };
 
 export default function RootLayout({

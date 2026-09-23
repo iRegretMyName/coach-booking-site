@@ -1,92 +1,15 @@
-import { siteConfig } from '@/app/config/site'
+import Link from 'next/link'
 import ScrollReveal from '@/app/components/ScrollReveal'
 
+const feelings = [['01', 'Always on edge, even at home?', 'Your system may be protecting you long after the danger has passed.'], ['02', 'Reacting instead of responding with family?', 'Co-regulation and old patterns can make the smallest moment feel very big.'], ['03', 'Knowing spiritual concepts but not able to live them?', 'Presence becomes real when the body has enough safety to receive it.']]
+
 export default function Home() {
-  return (
-    <div
-      style={{
-        padding: '5rem 2rem',
-        maxWidth: '1100px',
-        margin: '0 auto',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '3rem',
-        flexWrap: 'wrap',
-      }}
-    >
-      {/* Left: Text */}
-      <div style={{ flex: '1 1 400px' }}>
-        <ScrollReveal>
-          <h1 style={{ fontSize: '2.75rem', marginBottom: '1.2rem', color: '#1E2A3A' }}>
-            Hi, I'm {siteConfig.coachName}
-          </h1>
-          <p style={{ fontSize: '1.15rem', color: '#5C6B7A', marginBottom: '2rem', lineHeight: '1.6' }}>
-            {siteConfig.tagline} {siteConfig.heroIntro}
-          </p>
-          <a
-            href="/book"
-            style={{
-              display: 'inline-block',
-              backgroundColor: '#1E2A3A',
-              color: '#F7F3EC',
-              padding: '0.85rem 1.75rem',
-              borderRadius: '4px',
-              textDecoration: 'none',
-              fontWeight: 600,
-            }}
-          >
-            Book a Session
-          </a>
-        </ScrollReveal>
-      </div>
-
-      {/* Right: Photo with accent shape */}
-      <div
-        style={{
-          flex: '1 1 280px',
-          position: 'relative',
-          display: 'flex',
-          justifyContent: 'center',
-        }}
-      >
-        {/* Accent shape behind photo */}
-        <div
-          style={{
-            position: 'absolute',
-            width: '260px',
-            height: '260px',
-            backgroundColor: '#3611d2',
-            opacity: 0.15,
-            borderRadius: '38% 62% 63% 37% / 41% 44% 56% 59%',
-            top: '10px',
-            left: '10px',
-          }}
-        />
-
-        {/* Photo */}
-        <div
-          className="floating-photo"
-          style={{
-            position: 'relative',
-            width: '260px',
-            height: '260px',
-            borderRadius: '38% 62% 63% 37% / 41% 44% 56% 59%',
-            overflow: 'hidden',
-            border: '4px solid #FFFFFF',
-            boxShadow: '0 10px 30px rgba(30, 42, 58, 0.15)',
-          }}
-        >
-          <img
-            src="/about-photo.jpeg"
-            alt={siteConfig.coachName}
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-            }}
-          />
-        </div>
-      </div>
-    </div>
-  )
+  return <main className="home home--instayog">
+    <section className="home-hero"><div className="home-hero-orbit home-hero-orbit--one" /><div className="home-hero-orbit home-hero-orbit--two" /><div className="home-hero-copy"><p className="eyebrow">INSTAYOG STUDIO · WITH PRAGATI SINGH</p><h1>Regulate your<br />nervous system.<br /><i>Recreate your reality.</i></h1><p className="home-lede">We live much of our lives in fight and flight without knowing it. Through breath, thought, mantra and environment, you can learn to speak kindly to your own nervous system—and think clearer, love better, and grow spiritually.</p><div className="hero-actions"><Link href="/book" className="button button--ink">Start with 1:1 counselling <span>↗</span></Link><Link href="/resources" className="text-link">Take the free quiz <span>↓</span></Link></div><div className="hero-note"><span className="hero-note-mark">✦</span><span>Small shifts in nervous system.<br />Profound shifts in life.</span></div></div><div className="home-portrait-wrap"><p className="portrait-label portrait-label--top">A CALM HOME<br />ON THE INTERNET</p><div className="home-portrait-frame"><img src="/about-photo.jpeg" alt="Pragati Singh, founder of Instayog Studio" /></div><p className="portrait-label portrait-label--bottom">BODY · MIND<br />&amp; SOUL</p><div className="portrait-stamp">PAUSE<br />BREATHE<br />BEGIN</div></div></section>
+    <ScrollReveal><section className="home-feelings"><div className="feelings-intro"><p className="eyebrow">DO YOU FEEL…?</p><h2>You are not broken.<br /><i>Your system is speaking.</i></h2></div><div className="feelings-list">{feelings.map(([number, title, text]) => <article key={number} className="feeling-card"><span>{number}</span><h3>{title}</h3><p>{text}</p></article>)}</div></section></ScrollReveal>
+    <section className="home-manifesto"><p className="eyebrow">WHAT IS NERVOUS SYSTEM REGULATION?</p><p className="manifesto-copy">It is the practice of helping your body, mind, environment and inner world remember <i>safety.</i></p><div className="regulation-map"><span>BODY</span><b>↔</b><span>THOUGHT</span><b>↔</b><span>EMOTION</span><b>↔</b><span>REALITY</span></div><Link href="/services" className="text-link">Explore the work <span>→</span></Link></section>
+    <section className="home-paths"><div className="paths-intro"><p className="eyebrow">WAYS TO WORK TOGETHER</p><h2>A practice for the life you are living now.</h2><p>From a first conversation to deeper transformation, every offering honours your pace and your real world.</p></div><div className="path-list">{[['01','Nervous System Regulation','Begin with a personalised map of your patterns and a practical ritual for the days ahead.'],['02','Power of Sound & Mantra','Use repeated sound, voice and spiritual practice as pathways back to presence.'],['03','The Bridge','Bring your spiritual understanding into the relationships, stress and responsibilities of everyday life.']].map(([number,title,copy]) => <Link href="/services" className="path-item" key={title}><span>{number}</span><div><h3>{title}</h3><p>{copy}</p></div><b>↗</b></Link>)}</div></section>
+    <ScrollReveal><section className="home-journal-callout"><div><p className="eyebrow">THE PRESENCE JOURNAL</p><h2>Knowledge that meets you where you are.</h2><p>Stories and practices on nervous system regulation, sound and mantra science, relationships and karma.</p><Link href="/Blog" className="button button--light">Enter the journal <span>→</span></Link></div><div className="journal-orb"><span>LEARN<br />SLOWLY</span></div></section></ScrollReveal>
+    <section className="home-letter"><p className="eyebrow">SUNDAY PRESENCE LETTER</p><h2>One mantra.<br />One practice.<br /><i>One truth.</i></h2><p>A gentle weekly note for your nervous system and spiritual life. The email connection will be opened when the studio’s newsletter service is connected.</p><Link className="text-link" href="/contact">Stay in the circle <span>→</span></Link></section>
+  </main>
 }
